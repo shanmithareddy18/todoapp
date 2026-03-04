@@ -2,21 +2,20 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class persondetails(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+class student(models.Model):
     name = models.CharField(max_length=100)
-    age = models.IntegerField()
-    email = models.EmailField()
-    phone = models.CharField(max_length=10)
+    department = models.CharField(max_length=100)
+    year = models.IntegerField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
 
 
-class marks(models.Model):
-    person = models.ForeignKey(persondetails, on_delete=models.CASCADE)
-    subject = models.CharField(max_length=100)
-    marks = models.IntegerField()
+class course(models.Model):
+    course_name = models.CharField(max_length=100)
+    credits = models.IntegerField()
+    student = models.ForeignKey(student, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.subject
+        return self.course_name

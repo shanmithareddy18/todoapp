@@ -1,29 +1,29 @@
 from rest_framework import generics
-from .models import persondetails, marks
-from .serializers import persondetailsserializer, marksserializer, Userserializer
+from .models import student, course
+from .serializers import studentserializer, courseserializer, Userserializer
 from django.contrib.auth.models import User
 from rest_framework.permissions import IsAuthenticated
 
 
-class persondetailslist(generics.ListCreateAPIView):
-    queryset = persondetails.objects.all()
-    serializer_class = persondetailsserializer
+class studentlist(generics.ListCreateAPIView):
+    queryset = student.objects.all()
+    serializer_class = studentserializer
     permission_classes = [IsAuthenticated]
 
 
-class marksdetailslist(generics.ListCreateAPIView):
-    queryset = marks.objects.all()
-    serializer_class = marksserializer
+class courselist(generics.ListCreateAPIView):
+    queryset = course.objects.all()
+    serializer_class = courseserializer
 
 
-class persondetailsview(generics.RetrieveUpdateDestroyAPIView):
-    queryset = persondetails.objects.all()
-    serializer_class = persondetailsserializer
+class studentview(generics.RetrieveUpdateDestroyAPIView):
+    queryset = student.objects.all()
+    serializer_class = studentserializer
 
 
-class marksdetailsview(generics.RetrieveUpdateDestroyAPIView):
-    queryset = marks.objects.all()
-    serializer_class = marksserializer
+class courseview(generics.RetrieveUpdateDestroyAPIView):
+    queryset = course.objects.all()
+    serializer_class = courseserializer
 
 
 class UserCreate(generics.CreateAPIView):
